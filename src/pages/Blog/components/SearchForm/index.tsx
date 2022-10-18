@@ -1,4 +1,4 @@
-import { SearchFormContainer } from "./styles";
+import { Input, SearchFormContainer } from "./styles";
 
 export function SearchForm() {
   return (
@@ -7,6 +7,9 @@ export function SearchForm() {
         Publicações
         <span>6 publicações</span>
       </div>
+      <Input
+        placeholder="Buscar conteúdo"
+      />
     </SearchFormContainer>
   )
 }

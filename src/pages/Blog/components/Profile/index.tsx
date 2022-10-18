@@ -25,11 +25,11 @@ export function Profile() {
           />
           <InfoWithIcon
             icon={<Buildings size={18} weight="fill"/>}
-            text={'ArturMinelli'}
+            text={'Google'}
           />
           <InfoWithIcon
             icon={<Users size={18} weight="fill"/>}
-            text={'Google'}
+            text={'32 seguidores'}
           />
         </div>
       </ProfileInfo>
