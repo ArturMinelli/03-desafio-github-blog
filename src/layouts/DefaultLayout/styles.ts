@@ -11,4 +11,5 @@ export const LayoutContainer = styled.div`
 export const ContentContainer = styled.div`
   width: 54rem;
   margin-top: -7.75rem;
+  margin-bottom: 3.5rem;
 `
