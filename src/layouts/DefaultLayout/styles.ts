@@ -9,6 +9,6 @@ export const LayoutContainer = styled.div`
 `
 
 export const ContentContainer = styled.div`
-  min-width: 54rem;
+  width: 54rem;
   margin-top: -7.75rem;
 `
