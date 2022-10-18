@@ -19,6 +19,7 @@ export const ProfileContainer = styled.section`
 
 export const ProfileInfo = styled.div`
   flex: 1;
+  position: relative;
 
   h1 {
     color: ${({ theme }) => theme['base-title']};
