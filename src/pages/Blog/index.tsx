@@ -21,7 +21,9 @@ export function Blog() {
   return (
     <BlogContainer>
       <Profile />
-      <SearchForm />
+      <SearchForm
+        issuesAmount={issues.length}
+      />
       <PostsContainer>
 
         {issues.map((issue: any) => (

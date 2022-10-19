@@ -1,11 +1,15 @@
 import { Input, SearchFormContainer } from "./styles";
 
-export function SearchForm() {
+interface SearchFormProps {
+  issuesAmount: number;
+}
+
+export function SearchForm({ issuesAmount }: SearchFormProps) {
   return (
     <SearchFormContainer>
       <div>
         Publicações
-        <span>6 publicações</span>
+        <span> {issuesAmount && `${issuesAmount} publicações`} </span>
       </div>
       <Input
         placeholder="Buscar conteúdo"
