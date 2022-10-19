@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown'
 
 export function Post() {
   const { issueNumber } = useParams()
-  const [issue, setIssue] = useState<any>()
+  const [issue, setIssue] = useState<any>({})
 
   async function fetchIssue() {
     const response = await issueApi(`/${issueNumber}`)
@@ -21,13 +21,10 @@ export function Post() {
 
   return (
     <PostContainer>
-      {issue && <PostHeader
-                  issue={issue}
-                />
-      }
+      <PostHeader issue={issue}/>
       <PostContent>
         <ReactMarkdown>
-          {issue && issue.body}
+          {issue.body}
         </ReactMarkdown>
       </PostContent>
     </PostContainer>

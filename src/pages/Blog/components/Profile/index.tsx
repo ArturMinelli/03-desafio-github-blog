@@ -1,7 +1,7 @@
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import { Buildings, GithubLogo, Users } from 'phosphor-react'
 import { ProfileContainer, ProfileHeader, ProfileInfo } from "./styles";
-import { Link } from "../../../../components/Link";
+import { StyledLink } from "../../../../components/StyledLink";
 import { ArrowSquareOut } from 'phosphor-react'
 
 export function Profile({ user }: any) {
@@ -12,13 +12,12 @@ export function Profile({ user }: any) {
       <ProfileInfo>
         <ProfileHeader>
           <h1>{user.name}</h1>
-          <Link
-            type="external"
-            text="github"
-            href={user.html_url}
-            icon={<ArrowSquareOut size={18} weight="bold" />}
-            iconRight={true}
-          />
+          <StyledLink>
+            <a href={user.html_url}>
+              github
+              <ArrowSquareOut size={20} weight="bold"/>
+            </a>
+          </StyledLink>
         </ProfileHeader>
         <p>{user.bio}</p>
         <div>
