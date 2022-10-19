@@ -17,7 +17,6 @@ export function Blog() {
 
   async function fetchUser() {
     const response = await userApi.get('')
-    console.log(response.data)
     setUser(response.data)
   }
 

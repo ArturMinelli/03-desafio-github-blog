@@ -1,16 +1,34 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { issueApi } from "../../lib/axios";
 import { PostHeader } from "./components/PostHeader";
 import { PostContainer, PostContent } from "./styles";
+import ReactMarkdown from 'react-markdown'
 
 export function Post() {
+  const { issueNumber } = useParams()
+  const [issue, setIssue] = useState<any>()
+
+  async function fetchIssue() {
+    const response = await issueApi(`/${issueNumber}`)
+
+    setIssue(response.data)
+  }
+
+  useEffect(() => {
+    fetchIssue()
+  }, [])
 
   return (
     <PostContainer>
-      <PostHeader />
+      {issue && <PostHeader
+                  issue={issue}
+                />
+      }
       <PostContent>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quia architecto ducimus tempore libero commodi dolore, dolores sit quisquam harum culpa consequatur, rerum excepturi hic et, exercitationem omnis eligendi laborum.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quia architecto ducimus tempore libero commodi dolore, dolores sit quisquam harum culpa consequatur, rerum excepturi hic et, exercitationem omnis eligendi laborum.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quia architecto ducimus tempore libero commodi dolore, dolores sit quisquam harum culpa consequatur, rerum excepturi hic et, exercitationem omnis eligendi laborum.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates quia architecto ducimus tempore libero commodi dolore, dolores sit quisquam harum culpa consequatur, rerum excepturi hic et, exercitationem omnis eligendi laborum.</p>
+        <ReactMarkdown>
+          {issue && issue.body}
+        </ReactMarkdown>
       </PostContent>
     </PostContainer>
   )

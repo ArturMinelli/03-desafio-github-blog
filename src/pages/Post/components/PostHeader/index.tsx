@@ -1,40 +1,41 @@
 import { Link } from "../../../../components/Link";
-import { Link as RouterLink } from 'react-router-dom'
 import { InfosWithIconContainer, LinksContainer, PostHeaderContainer, Title } from "./styles";
 import { CaretLeft, ArrowSquareOut, GithubLogo, Calendar, ChatCircle } from 'phosphor-react'
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
+import { distanceToNow } from "../../../../utils/formatDistanceToNow";
 
-export function PostHeader() {
+export function PostHeader({ issue }: any) {
   return (
     <PostHeaderContainer>
     <LinksContainer>
-      <RouterLink to='/' style={{textDecoration: 'none'}}>
-        <Link
-          text="Voltar"
-          icon={<CaretLeft size={18} weight="bold" />}
-          iconRight={false}
-        />
-      </RouterLink>
       <Link
+        href="/"
+        type="internal"
+        text="Voltar"
+        icon={<CaretLeft size={18} weight="bold" />}
+        iconRight={false}
+      />
+      <Link
+        type="external"
         text="Ver no github"
         icon={<ArrowSquareOut size={18} weight="bold" />}
         iconRight={true}
-        href="https://github.com/ArturMinelli"
+        href={issue.html_url}
       />
     </LinksContainer>
-    <Title>The Secrets of OOP (Object Oriented Programming)</Title>
+    <Title>{issue.title}</Title>
     <InfosWithIconContainer>
       <InfoWithIcon
         icon={<GithubLogo size={18} weight="fill"/>}
-        text={'ArturMinelli'}
+        text={issue.user.login}
       />
       <InfoWithIcon
         icon={<Calendar size={18} weight="fill"/>}
-        text={'Há 2 dias'}
+        text={distanceToNow(new Date(issue.created_at))}
       />
       <InfoWithIcon
         icon={<ChatCircle size={18} weight="fill"/>}
-        text={'5 comentários'}
+        text={`${issue.comments} comentários`}
       />
     </InfosWithIconContainer>
   </PostHeaderContainer>

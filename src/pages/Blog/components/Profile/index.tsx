@@ -13,6 +13,7 @@ export function Profile({ user }: any) {
         <ProfileHeader>
           <h1>{user.name}</h1>
           <Link
+            type="external"
             text="github"
             href={user.html_url}
             icon={<ArrowSquareOut size={18} weight="bold" />}
