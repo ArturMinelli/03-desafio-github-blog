@@ -1,10 +1,11 @@
-import { Profile } from "./components/Profile";
+import { PostHeader } from "./components/PostHeader";
 import { PostContainer } from "./styles";
 
 export function Post() {
+
   return (
     <PostContainer>
-      <h1>Post</h1>
+      <PostHeader />
     </PostContainer>
   )
 }

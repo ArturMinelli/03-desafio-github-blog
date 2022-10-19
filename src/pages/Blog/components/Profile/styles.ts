@@ -17,6 +17,13 @@ export const ProfileContainer = styled.section`
   }
 `
 
+export const ProfileHeader = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`
+
 export const ProfileInfo = styled.div`
   flex: 1;
   position: relative;

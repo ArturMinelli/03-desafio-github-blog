@@ -1,7 +1,8 @@
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import { Buildings, GithubLogo, Users } from 'phosphor-react'
-import { ProfileContainer, ProfileInfo } from "./styles";
-import { GithubLink } from "../../../../components/GithubLink";
+import { ProfileContainer, ProfileHeader, ProfileInfo } from "./styles";
+import { Link } from "../../../../components/Link";
+import { ArrowSquareOut } from 'phosphor-react'
 
 export function Profile() {
   return (
@@ -9,11 +10,15 @@ export function Profile() {
       <img src="https://avatars.githubusercontent.com/u/94147899?v=4" alt="" />
 
       <ProfileInfo>
-        <h1>Artur Minelli</h1>
-        <GithubLink
-          text="github"
-          href="https://github.com/ArturMinelli"
-        />
+        <ProfileHeader>
+          <h1>Artur Minelli</h1>
+          <Link
+            text="github"
+            href="https://github.com/ArturMinelli"
+            icon={<ArrowSquareOut size={18} weight="bold" />}
+            iconRight={true}
+          />
+        </ProfileHeader>
         <p>
           Hi, my name is Artur, and i am a Web Developer. I love learning about technology and i really like soliving puzzles and logic games.
           So becoming a Web Developer was a very natural process for me.
