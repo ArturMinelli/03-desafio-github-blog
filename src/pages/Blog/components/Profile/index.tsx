@@ -4,37 +4,35 @@ import { ProfileContainer, ProfileHeader, ProfileInfo } from "./styles";
 import { Link } from "../../../../components/Link";
 import { ArrowSquareOut } from 'phosphor-react'
 
-export function Profile() {
+export function Profile({ user }: any) {
   return (
     <ProfileContainer>
-      <img src="https://avatars.githubusercontent.com/u/94147899?v=4" alt="" />
+      <img src={user.avatar_url} alt="Github Avatar" />
 
       <ProfileInfo>
         <ProfileHeader>
-          <h1>Artur Minelli</h1>
+          <h1>{user.name}</h1>
           <Link
             text="github"
-            href="https://github.com/ArturMinelli"
+            href={user.html_url}
             icon={<ArrowSquareOut size={18} weight="bold" />}
             iconRight={true}
           />
         </ProfileHeader>
-        <p>
-          Hi, my name is Artur, and i am a Web Developer. I love learning about technology and i really like soliving puzzles and logic games.
-          So becoming a Web Developer was a very natural process for me.
-        </p>
+        <p>{user.bio}</p>
         <div>
           <InfoWithIcon
             icon={<GithubLogo size={18} weight="fill"/>}
             text={'ArturMinelli'}
           />
-          <InfoWithIcon
-            icon={<Buildings size={18} weight="fill"/>}
-            text={'Google'}
-          />
+          {user.company && <InfoWithIcon
+                              icon={<Buildings size={18} weight="fill"/>}
+                              text={'Google'}
+                            />
+          }
           <InfoWithIcon
             icon={<Users size={18} weight="fill"/>}
-            text={'32 seguidores'}
+            text={`${user.followers} seguidores`}
           />
         </div>
       </ProfileInfo>

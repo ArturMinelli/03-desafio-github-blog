@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { api } from '../../lib/axios';
+import { issuesApi, userApi } from '../../lib/axios';
 import { PostCard } from './components/PostCard';
 import { Profile } from './components/Profile';
 import { SearchForm } from './components/SearchForm';
@@ -7,20 +7,30 @@ import { BlogContainer, PostsContainer } from "./styles";
 
 export function Blog() {
   const [issues, setIssues] = useState([])
+  const [user, setUser] = useState({})
 
   async function fetchIssues() {
-    const response = await api.get('/')
+    const response = await issuesApi.get('')
 
     setIssues(response.data.items)
   }
 
+  async function fetchUser() {
+    const response = await userApi.get('')
+    console.log(response.data)
+    setUser(response.data)
+  }
+
   useEffect(() => {
     fetchIssues()
+    fetchUser()
   }, [])
 
   return (
     <BlogContainer>
-      <Profile />
+      <Profile
+        user={user}
+      />
       <SearchForm
         issuesAmount={issues.length}
       />
