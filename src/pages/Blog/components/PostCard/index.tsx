@@ -11,16 +11,16 @@ interface PostCardProps {
 }
 
 export function PostCard({issueNumber, issueTitle, issueContent, createdAt}: PostCardProps) {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  function handlePostClicked() {
-    const path = `/post/${issueNumber}`
-
-    navigate(path)
-  }
+  // function handlePostClicked() {
+  //   const path = `/post/${issueNumber}`
+  //   return
+  //   navigate(path)
+  // }
 
   return (
-    <PostCardContainer onClick={handlePostClicked}>
+    <PostCardContainer to={`/post/${issueNumber}`} onClick={console.log}>
       <PostCardHeader>
         <h2>{issueTitle}</h2>
         <span>{distanceToNow(new Date(createdAt))}</span>
