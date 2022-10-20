@@ -1,55 +1,63 @@
-import { useEffect, useState } from 'react';
-import { issuesApi, userApi } from '../../lib/axios';
+import { useCallback, useEffect, useState } from 'react';
+import { Spinner } from '../../components/Spinner';
+import { api } from '../../lib/axios';
 import { PostCard } from './components/PostCard';
 import { Profile } from './components/Profile';
 import { SearchForm } from './components/SearchForm';
 import { BlogContainer, PostsContainer } from "./styles";
 
+const username = import.meta.env.VITE_GITHUB_USERNAME
+const repo = import.meta.env.VITE_GITHUB_REPO
+
+export interface IPost {
+  title: string;
+  body: string;
+  created_at: string;
+  number: number;
+  html_url: string;
+  comments: number;
+  user: {
+    login: string;
+  }
+}
+
 export function Blog() {
-  const [issues, setIssues] = useState([])
-  const [user, setUser] = useState({})
+  const [posts, setPosts] = useState<IPost[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  async function fetchIssues(query = '') {
-    const response = await issuesApi.get('', {
-      params: {
-        q: `${query}repo:ArturMinelli/03-desafio-github-blog`,
-      }
-    })
-
-    setIssues(response.data.items)
-  }
-
-  async function fetchUser() {
-    const response = await userApi.get('')
-    setUser(response.data)
-  }
+  const getPosts = useCallback(async (query: string = "") => {
+    try {
+      setIsLoading(true)
+      const response = await api.get(`/search/issues?q=${query}%20repo:${username}/${repo}`)
+      setPosts(response.data.items)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
-    fetchIssues()
-    fetchUser()
+    getPosts()
   }, [])
 
   return (
     <BlogContainer>
-      <Profile
-        user={user}
-      />
+      <Profile />
       <SearchForm
-        issuesAmount={issues.length}
-        fetchIssues={fetchIssues}
+        postsAmount={posts.length}
+        getPosts={getPosts}
       />
-      <PostsContainer>
-
-        {issues.map((issue: any) => (
-          <PostCard
-            key={issue.id}
-            issueNumber={issue.number}
-            issueTitle={issue.title}
-            issueContent={issue.body}
-            createdAt={issue.created_at}
-          />
-        ))}
-      </PostsContainer>
+      {isLoading ? (
+        <Spinner />
+      ): (
+        <PostsContainer>
+          {posts.map((post) => (
+              <PostCard
+                key={post.number}
+                post={post}
+              />
+            ))}
+        </PostsContainer>
+      )}
     </BlogContainer>
   )
 }

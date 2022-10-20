@@ -1,34 +1,23 @@
 import { PostCardContainer, PostCardHeader } from "./styles";
-import { useNavigate } from "react-router-dom";
 import { distanceToNow } from "../../../../utils/formatDistanceToNow";
 import markdownToTxt from 'markdown-to-txt';
+import { IPost } from "../..";
 
 interface PostCardProps {
-  issueNumber: number;
-  issueTitle: string;
-  issueContent: string;
-  createdAt: string;
+  post: IPost;
 }
 
-export function PostCard({issueNumber, issueTitle, issueContent, createdAt}: PostCardProps) {
-  // const navigate = useNavigate()
-
-  // function handlePostClicked() {
-  //   const path = `/post/${issueNumber}`
-  //   return
-  //   navigate(path)
-  // }
-
+export function PostCard({ post }: PostCardProps) {
   return (
     <PostCardContainer
-      to={`/post/${issueNumber}`}
+      to={`/post/${post.number}`}
     >
       <PostCardHeader>
-        <h2>{issueTitle}</h2>
-        <span>{distanceToNow(new Date(createdAt))}</span>
+        <h2>{post.title}</h2>
+        <span>{distanceToNow(new Date(post.created_at))}</span>
       </PostCardHeader>
       <p>
-        {markdownToTxt(issueContent)}
+        {markdownToTxt(post.body)}
       </p>
     </PostCardContainer>
   )

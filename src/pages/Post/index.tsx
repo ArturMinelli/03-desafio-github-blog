@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { issueApi } from "../../lib/axios";
 import { PostHeader } from "./components/PostHeader";
 import { PostContainer, PostContent } from "./styles";
 import ReactMarkdown from 'react-markdown'
+import { api } from "../../lib/axios";
 
 export function Post() {
   const { issueNumber } = useParams()
   const [issue, setIssue] = useState<any>({})
 
   async function fetchIssue() {
-    const response = await issueApi(`/${issueNumber}`)
+    const response = await api(`/${issueNumber}`)
 
     setIssue(response.data)
   }

@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
 interface SearchFormProps {
-  issuesAmount: number;
-  fetchIssues: (query: string) => void;
+  postsAmount: number;
+  getPosts: (query: string) => void;
 }
 
 const searchFormSchema = zod.object({
@@ -14,13 +14,13 @@ const searchFormSchema = zod.object({
 
 type SearchFormInputs = zod.infer<typeof searchFormSchema>
 
-export function SearchForm({ issuesAmount, fetchIssues }: SearchFormProps) {
+export function SearchForm({ postsAmount, getPosts }: SearchFormProps) {
   const { register, handleSubmit, reset } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema)
   })
 
   function handleSearchPosts({ query }: SearchFormInputs) {
-    fetchIssues(query)
+    getPosts(query)
     reset()
   }
 
@@ -28,7 +28,7 @@ export function SearchForm({ issuesAmount, fetchIssues }: SearchFormProps) {
     <SearchFormContainer onSubmit={handleSubmit(handleSearchPosts)}>
       <header>
         Publicações
-        <span> {issuesAmount && `${issuesAmount} publicações`} </span>
+        <span> {`${postsAmount} publicações`} </span>
       </header>
       <Input
         {...register('query')}
