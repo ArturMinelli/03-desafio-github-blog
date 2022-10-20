@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 
 interface SearchFormProps {
   issuesAmount: number;
+  fetchIssues: (query: string) => void;
 }
 
 const searchFormSchema = zod.object({
@@ -13,13 +14,15 @@ const searchFormSchema = zod.object({
 
 type SearchFormInputs = zod.infer<typeof searchFormSchema>
 
-export function SearchForm({ issuesAmount }: SearchFormProps) {
-  const { register, handleSubmit } = useForm<SearchFormInputs>({
+export function SearchForm({ issuesAmount, fetchIssues }: SearchFormProps) {
+  const { register, handleSubmit, reset } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema)
   })
 
-  function handleSearchPosts(data: SearchFormInputs) {
-    console.log(data)
+  function handleSearchPosts({ query }: SearchFormInputs) {
+    fetchIssues(query)
+
+    reset()
   }
 
   return (

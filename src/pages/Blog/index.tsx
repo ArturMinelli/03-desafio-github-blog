@@ -9,8 +9,12 @@ export function Blog() {
   const [issues, setIssues] = useState([])
   const [user, setUser] = useState({})
 
-  async function fetchIssues() {
-    const response = await issuesApi.get('')
+  async function fetchIssues(query = '') {
+    const response = await issuesApi.get('', {
+      params: {
+        q: `${query}repo:ArturMinelli/03-desafio-github-blog`,
+      }
+    })
 
     setIssues(response.data.items)
   }
@@ -32,6 +36,7 @@ export function Blog() {
       />
       <SearchForm
         issuesAmount={issues.length}
+        fetchIssues={fetchIssues}
       />
       <PostsContainer>
 
