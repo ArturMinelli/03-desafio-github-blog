@@ -16,6 +16,7 @@ interface ProfileData {
   bio: string;
   company: string;
   followers: number;
+  login: string;
 }
 
 export function Profile() {
@@ -58,7 +59,7 @@ export function Profile() {
             <InfosWithIconContainer>
               <InfoWithIcon
                 icon={<GithubLogo size={18} weight="fill"/>}
-                text={'ArturMinelli'}
+                text={profileData.login}
               />
               {profileData.company && <InfoWithIcon
                                   icon={<Buildings size={18} weight="fill"/>}

@@ -16,7 +16,7 @@ export const SpinnerContainer = styled.div`
   }
 
   .sk-cube {
-    background-color: ${({ theme }) => theme['base-text']} !important;
+    background-color: ${({ theme }) => theme.colors['base-text']} !important;
   }
 
   .sk-cube-grid .sk-cube {
