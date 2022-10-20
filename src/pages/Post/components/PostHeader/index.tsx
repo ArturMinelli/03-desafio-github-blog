@@ -4,12 +4,13 @@ import { CaretLeft, ArrowSquareOut, GithubLogo, Calendar, ChatCircle } from 'pho
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import { distanceToNow } from "../../../../utils/formatDistanceToNow";
 import { Link as RouterLink } from 'react-router-dom'
+import { IPost } from "../../../Blog";
 
 interface PostHeaderProps {
-  issue: any | undefined;
+  post: IPost;
 }
 
-export function PostHeader({ issue }: PostHeaderProps) {
+export function PostHeader({ post }: PostHeaderProps) {
   return (
     <PostHeaderContainer>
     <LinksContainer>
@@ -20,25 +21,25 @@ export function PostHeader({ issue }: PostHeaderProps) {
         </RouterLink>
       </StyledLink>
       <StyledLink>
-        <a href={issue.html_url}>
+        <a href={post.html_url}>
           github
           <ArrowSquareOut size={20} weight="bold"/>
         </a>
       </StyledLink>
     </LinksContainer>
-    <Title>{issue.title}</Title>
+    <Title>{post.title}</Title>
     <InfosWithIconContainer>
       <InfoWithIcon
         icon={<GithubLogo size={18} weight="fill"/>}
-        text={issue.user?.login}
+        text={post.user?.login}
       />
       <InfoWithIcon
         icon={<Calendar size={18} weight="fill"/>}
-        text={issue.created_at && distanceToNow(new Date(issue.created_at))}
+        text={post.created_at && distanceToNow(new Date(post.created_at))}
       />
       <InfoWithIcon
         icon={<ChatCircle size={18} weight="fill"/>}
-        text={`${issue.comments} comentários`}
+        text={`${post.comments} comentários`}
       />
     </InfosWithIconContainer>
   </PostHeaderContainer>
