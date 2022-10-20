@@ -9,17 +9,17 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
       outline: none;
-      box-shadow: 0 0 0 2px ${({ theme }) => theme['blue']};
+      box-shadow: 0 0 0 2px ${({ theme }) => theme.colors['blue']};
   }
 
   body {
-    background: ${({ theme }) => theme['base-background']};
-    color: ${({ theme }) => theme['base-text']};
+    background: ${({ theme }) => theme.colors['base-background']};
+    color: ${({ theme }) => theme.colors['base-text']};
     --webkit-font-smoothing: antialiased;
   }
 
   body, input, textarea, button {
-    font: 400 1rem 'Nunito', sans-serif;
+    font: 400 ${({ theme }) => theme.fontSizes['text-m']} 'Nunito', sans-serif;
     line-height: 160%;
   }
 `

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const PostCardContainer = styled(Link)`
-  background: ${({ theme }) => theme['base-post']};
+  background: ${({ theme }) => theme.colors['base-post']};
   display: flex;
   flex-direction: column;
   height: 16.25rem;
@@ -10,13 +10,13 @@ export const PostCardContainer = styled(Link)`
   border-radius: 10px;
   transition: 0.5s;
   text-decoration: none;
-  color: ${({ theme }) => theme['base-text']};
+  color: ${({ theme }) => theme.colors['base-text']};
 
   &:hover {
     cursor: pointer;
     transition: 0.75s ease-out;
     transform: translate(-0.25rem, -0.75rem);
-    box-shadow: 0.25rem 0.25rem 20px 2px ${({ theme }) => theme['base-input']};
+    box-shadow: 0.25rem 0.25rem 20px 2px ${({ theme }) => theme.colors['base-input']};
   }
 
   p {
@@ -34,9 +34,9 @@ export const PostCardHeader = styled.div`
   align-items: flex-start;
 
   h2 {
-    font-size: 1.25rem;
+    font-size: ${({ theme }) => theme.fontSizes['title-m']};
     font-weight: 700;
-    color: ${({ theme }) => theme['base-title']};
+    color: ${({ theme }) => theme.colors['base-title']};
   }
 
   span {
@@ -44,6 +44,6 @@ export const PostCardHeader = styled.div`
     display: flex;
     justify-content: right;
     font-size: 0.75rem;
-    color: ${({ theme }) => theme['base-subtitle']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
   }
 `

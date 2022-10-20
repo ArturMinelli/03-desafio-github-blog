@@ -7,13 +7,13 @@ export const SearchFormContainer = styled.form`
   header {
     display: flex;
     justify-content: space-between;
-    font-size: 1.25rem;
+    font-size: ${({ theme }) => theme.fontSizes['title-m']};
     font-weight: bold;
-    color: ${({ theme }) => theme['base-subtitle']};
+    color: ${({ theme }) => theme.colors['base-subtitle']};
 
     span {
-      color: ${({ theme }) => theme['base-span']};
-      font-size: 0.875rem;
+      color: ${({ theme }) => theme.colors['base-span']};
+      font-size: ${({ theme }) => theme.fontSizes['text-s']};
     }
   }
 `
@@ -21,13 +21,13 @@ export const SearchFormContainer = styled.form`
 export const Input = styled.input`
   width: 100%;
   padding: 0.75rem 1rem;
-  background: ${({ theme }) => theme['base-input']};
-  color: ${({ theme }) => theme['base-text']};
-  border: 1px solid ${({ theme }) => theme['base-border']};
+  background: ${({ theme }) => theme.colors['base-input']};
+  color: ${({ theme }) => theme.colors['base-text']};
+  border: 1px solid ${({ theme }) => theme.colors['base-border']};
   border-radius: 6px;
   margin-top: 1rem;
 
   &::placeholder {
-    color: ${({ theme }) => theme['base-label']};
+    color: ${({ theme }) => theme.colors['base-label']};
   }
 `

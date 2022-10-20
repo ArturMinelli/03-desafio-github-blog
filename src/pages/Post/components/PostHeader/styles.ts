@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const PostHeaderContainer = styled.div`
   width: 100%;
-  background-color: ${({ theme }) => theme['base-profile']};
+  background-color: ${({ theme }) => theme.colors['base-profile']};
   border-radius: 10px;
   padding: 2rem;
 `
@@ -19,8 +19,8 @@ export const InfosWithIconContainer = styled.ul`
 `
 
 export const Title = styled.h1`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme['base-title']};
+  font-size: ${({ theme }) => theme.fontSizes['title-l']};
+  color: ${({ theme }) => theme.colors['base-title']};
   font-weight: 700;
   margin-top: 1rem;
   margin-bottom: 1rem;

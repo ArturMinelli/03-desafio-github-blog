@@ -4,7 +4,7 @@ export const ProfileContainer = styled.section`
   width: 100%;
   padding: 2rem 2.25rem;
   border-radius: 10px;
-  background: ${({ theme }) => theme['base-profile']};
+  background: ${({ theme }) => theme.colors['base-profile']};
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -29,8 +29,8 @@ export const ProfileInfo = styled.div`
   height: 100%;
 
   h1 {
-    color: ${({ theme }) => theme['base-title']};
-    font-size: 1.5rem;
+    color: ${({ theme }) => theme.colors['base-title']};
+    font-size: ${({ theme }) => theme.fontSizes['title-l']};
     font-weight: 700;
   }
 

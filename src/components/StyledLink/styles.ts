@@ -7,13 +7,13 @@ export const LinkContainer = styled(Slot)`
   gap: 0.5rem;
   width: fit-content;
 
-  font-size: 0.75rem;
+  font-size: ${({ theme }) => theme.fontSizes.link};
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.blue};
+  color: ${({ theme }) => theme.colors.blue};
 
   svg {
-    color: ${({ theme }) => theme.blue};
+    color: ${({ theme }) => theme.colors.blue};
   }
 `
