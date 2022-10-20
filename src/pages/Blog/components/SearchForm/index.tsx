@@ -21,7 +21,6 @@ export function SearchForm({ issuesAmount, fetchIssues }: SearchFormProps) {
 
   function handleSearchPosts({ query }: SearchFormInputs) {
     fetchIssues(query)
-
     reset()
   }
 
