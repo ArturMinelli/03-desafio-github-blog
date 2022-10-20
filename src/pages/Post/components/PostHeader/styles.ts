@@ -13,7 +13,7 @@ export const LinksContainer = styled.div`
   justify-content: space-between;
 `
 
-export const InfosWithIconContainer = styled.div`
+export const InfosWithIconContainer = styled.ul`
   display: flex;
   gap: 2.5rem;
 `

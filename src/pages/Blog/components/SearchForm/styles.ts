@@ -4,7 +4,7 @@ export const SearchFormContainer = styled.form`
   width: 100%;
   margin-top: 4rem;
 
-  div {
+  header {
     display: flex;
     justify-content: space-between;
     font-size: 1.25rem;

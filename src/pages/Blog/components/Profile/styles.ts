@@ -17,7 +17,7 @@ export const ProfileContainer = styled.section`
   }
 `
 
-export const ProfileHeader = styled.div`
+export const ProfileHeader = styled.header`
   width: 100%;
   display: flex;
   align-items: flex-start;
@@ -26,7 +26,7 @@ export const ProfileHeader = styled.div`
 
 export const ProfileInfo = styled.div`
   flex: 1;
-  position: relative;
+  height: 100%;
 
   h1 {
     color: ${({ theme }) => theme['base-title']};
@@ -36,11 +36,11 @@ export const ProfileInfo = styled.div`
 
   p {
     margin-top: 0.75rem;
-    margin-bottom: 1.5rem;
   }
+`
 
-  div {
-    display: flex;
-    gap: 1.5rem;
-  }
+export const InfosWithIconContainer = styled.ul`
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
 `

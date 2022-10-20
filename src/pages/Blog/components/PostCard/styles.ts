@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 export const PostCardContainer = styled(Link)`
   background: ${({ theme }) => theme['base-post']};
-  width: 26rem;
   display: flex;
   flex-direction: column;
   height: 16.25rem;

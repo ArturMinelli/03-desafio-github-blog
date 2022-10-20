@@ -20,7 +20,9 @@ export function PostCard({issueNumber, issueTitle, issueContent, createdAt}: Pos
   // }
 
   return (
-    <PostCardContainer to={`/post/${issueNumber}`} onClick={console.log}>
+    <PostCardContainer
+      to={`/post/${issueNumber}`}
+    >
       <PostCardHeader>
         <h2>{issueTitle}</h2>
         <span>{distanceToNow(new Date(createdAt))}</span>

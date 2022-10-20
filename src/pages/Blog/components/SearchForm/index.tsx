@@ -26,10 +26,10 @@ export function SearchForm({ issuesAmount, fetchIssues }: SearchFormProps) {
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchPosts)}>
-      <div>
+      <header>
         Publicações
         <span> {issuesAmount && `${issuesAmount} publicações`} </span>
-      </div>
+      </header>
       <Input
         {...register('query')}
         placeholder="Buscar conteúdo"
