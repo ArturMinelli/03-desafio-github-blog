@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { api } from "../../../../lib/axios";
 import { Spinner } from "../../../../components/Spinner";
 
-const username = import.meta.env.VITE_GITHUB_USERNAME
+const username = "ArturMinelli" // import.meta.env.VITE_GITHUB_USERNAME
 
 interface ProfileData {
   name: string;
